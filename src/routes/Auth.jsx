@@ -21,23 +21,19 @@ const Auth = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
+      let data;
       if (newAccount) {
         // create account
-        const data = await createUserWithEmailAndPassword(
+        data = await createUserWithEmailAndPassword(
           authService,
           email,
           password
         );
-        console.log(data);
       } else {
         // log in
-        const data = await signInWithEmailAndPassword(
-          authService,
-          email,
-          password
-        );
-        console.log(data);
+        data = await signInWithEmailAndPassword(authService, email, password);
       }
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
